@@ -7,11 +7,11 @@ int main(int argc, char *argv[])
 {
     Particle par;
     boundary b = {-10,-10,-10,10,10,10};
-    while(true)
-    {
-        Particle::MakeRandomPositionParticle(b);
-        Sleep(500);
-    }
+    //while(true)
+    //{
+    //    Particle::MakeRandomPositionParticle(b);
+    //    Sleep(500);
+    //}
 
 
     QApplication a(argc, argv);
