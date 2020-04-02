@@ -18,11 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    particle.cpp
+    particle.cpp \
+    propertytree.cpp
 
 HEADERS += \
     mainwindow.h \
-    particle.h
+    particle.h \
+    propertytree.h
 
 FORMS += \
     mainwindow.ui

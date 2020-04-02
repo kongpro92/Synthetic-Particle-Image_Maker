@@ -7,6 +7,12 @@
 #include <QCommandLineParser>
 #include <QFileSystemModel>
 #include <QFileDialog>
+#include <QTreeWidgetItem>
+#include "propertytree.h"
+#include <QFileInfo>
+#include <QMessageBox>
+#include <QSettings>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,10 +32,15 @@ private slots:
 
 
     void on_newprojectpushButton_pressed();
+    void on_propertytreeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column);
 
 private:
     Ui::MainWindow *ui;
     QFileSystemModel *dirModel;
-    QFileSystemModel *fileModel;
+    QFileSystemModel *fileModel = NULL;
+    PropertyTree *propertytree = NULL;
 };
+
+
 #endif // MAINWINDOW_H
+
