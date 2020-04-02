@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>BoundaryVisibleVolumeSettingForm</class>
- <widget class="QDialog" name="BoundaryVisibleVolumeSettingForm">
+ <class>BoundaryVolumeSettingForm</class>
+ <widget class="QDialog" name="BoundaryVolumeSettingForm">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -34,7 +34,11 @@
      </widget>
     </item>
     <item row="2" column="3">
-     <widget class="QLineEdit" name="maxZlineEdit"/>
+     <widget class="QLineEdit" name="maxZlineEdit">
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
     </item>
     <item row="2" column="0">
      <widget class="QLabel" name="Maximumlabel">
@@ -44,16 +48,32 @@
      </widget>
     </item>
     <item row="1" column="2">
-     <widget class="QLineEdit" name="minYlineEdit"/>
+     <widget class="QLineEdit" name="minYlineEdit">
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLineEdit" name="minXlineEdit"/>
+     <widget class="QLineEdit" name="minXlineEdit">
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
     </item>
     <item row="1" column="3">
-     <widget class="QLineEdit" name="minZlineEdit"/>
+     <widget class="QLineEdit" name="minZlineEdit">
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
     </item>
     <item row="2" column="2">
-     <widget class="QLineEdit" name="maxYlineEdit"/>
+     <widget class="QLineEdit" name="maxYlineEdit">
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
     </item>
     <item row="0" column="2">
      <widget class="QLabel" name="Ylabel">
@@ -83,7 +103,11 @@
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QLineEdit" name="maxXlineEdit"/>
+     <widget class="QLineEdit" name="maxXlineEdit">
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
     </item>
     <item row="1" column="4">
      <widget class="QLabel" name="mm1label">

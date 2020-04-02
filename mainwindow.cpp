@@ -52,7 +52,22 @@ void MainWindow::on_newprojectpushButton_pressed()
 void MainWindow::on_propertytreeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column)
 {
     if(item->text(column) == "VisibleVolume"){
-        QMessageBox::information(this, tr("Info"), item->text(column));
+        BoundaryVolumeSettingForm* dlg;
+        if(propertytree->isVisibleVolumeData){
+            dlg = new BoundaryVolumeSettingForm(propertytree->bd);
+        }
+        else{
+            dlg = new BoundaryVolumeSettingForm();
+        }
+
+
+        if(dlg->exec() == QDialog::Accepted){//Ok
+            propertytree->bd = dlg->bd;
+            propertytree->isVisibleVolumeData = true;
+            propertytree->boundary_visibleVolume->setTextColor(0,QColor(78,192,78));
+        }
+
+
     }
     else if(item->text(column) == "unVisibleVolume"){
          QMessageBox::information(this, tr("Info"), item->text(column));

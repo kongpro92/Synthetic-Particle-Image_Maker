@@ -3,18 +3,23 @@
 
 #include <QDialog>
 #include <QSettings>
+#include <QPixmap>
+#include "boundary.h"
+#include "opencv2/opencv.hpp"
+
 
 namespace Ui {
-class BoundaryVisibleVolumeSettingForm;
+class BoundaryVolumeSettingForm;
 }
 
-class BoundaryVisibleVolumeSettingForm : public QDialog
+class BoundaryVolumeSettingForm : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit BoundaryVisibleVolumeSettingForm(QWidget *parent = nullptr);
-    ~BoundaryVisibleVolumeSettingForm();
+    explicit BoundaryVolumeSettingForm(QWidget *parent = nullptr);
+    explicit BoundaryVolumeSettingForm(Boundary b,QWidget *parent = nullptr);
+    ~BoundaryVolumeSettingForm();
 
 private slots:
     void on_OkpushButton_pressed();
@@ -28,17 +33,12 @@ private slots:
     void on_maxZlineEdit_returnPressed(){BoundarySet();}
 
 public:
-    float minx;
-    float miny;
-    float minz;
-    float maxx;
-    float maxy;
-    float maxz;
+    Boundary bd;
 
     void BoundarySet();
 
 private:
-    Ui::BoundaryVisibleVolumeSettingForm *ui;
+    Ui::BoundaryVolumeSettingForm *ui;
 };
 
 #endif // BOUNDARYVISIBLEVOLUMESETTINGFORM_H

@@ -12,6 +12,7 @@
 #include <QFileInfo>
 #include <QMessageBox>
 #include <QSettings>
+#include "boundaryvolumesettingform.h"
 
 
 QT_BEGIN_NAMESPACE

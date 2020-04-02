@@ -2,6 +2,8 @@
 #define PROPERTYTREE_H
 #include <QTreeWidgetItem>
 #include <QTreeWidget>
+#include "boundary.h"
+
 
 class PropertyTree
 {
@@ -12,13 +14,17 @@ public:
 
 public:
     QTreeWidget *parentwidget;
-    QTreeWidgetItem* Boundary;
-    QTreeWidgetItem* Boundary_VisibleVolume;
-    QTreeWidgetItem* Boundary_unVisibleVolume;
+    QTreeWidgetItem* boundary;
+    QTreeWidgetItem* boundary_visibleVolume;
+    QTreeWidgetItem* boundary_unvisibleVolume;
 
-    QTreeWidgetItem* Camera;
-    QTreeWidgetItem* Laser;
-    QTreeWidgetItem* Particle;
+    QTreeWidgetItem* camera;
+    QTreeWidgetItem* laser;
+    QTreeWidgetItem* particle;
+
+    bool isVisibleVolumeData = false;
+    Boundary bd;
+
 
 };
 
