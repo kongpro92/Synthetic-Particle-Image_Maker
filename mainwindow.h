@@ -35,6 +35,8 @@ private slots:
     void on_newprojectpushButton_pressed();
     void on_propertytreeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column);
 
+    void on_addcamerapushButton_pressed();
+
 private:
     Ui::MainWindow *ui;
     QFileSystemModel *dirModel;

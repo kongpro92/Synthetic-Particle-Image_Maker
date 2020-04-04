@@ -13,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
     dirModel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
     ui->treeViewFileExplorer->setModel(dirModel);
     ui->treeViewFileExplorer->setColumnWidth(0, 800);
-
 }
 
 MainWindow::~MainWindow()
@@ -53,23 +52,29 @@ void MainWindow::on_propertytreeWidget_itemDoubleClicked(QTreeWidgetItem *item, 
 {
     if(item->text(column) == "VisibleVolume"){
         BoundaryVolumeSettingForm* dlg;
-        if(propertytree->isVisibleVolumeData){
-            dlg = new BoundaryVolumeSettingForm(propertytree->bd);
-        }
-        else{
-            dlg = new BoundaryVolumeSettingForm();
-        }
-
-
+        if(propertytree->isVisibleVolumeData)dlg = new BoundaryVolumeSettingForm(propertytree->vbd);
+        else                                 dlg = new BoundaryVolumeSettingForm(true);
         if(dlg->exec() == QDialog::Accepted){//Ok
-            propertytree->bd = dlg->bd;
+            propertytree->vbd = dlg->bd;
             propertytree->isVisibleVolumeData = true;
             propertytree->boundary_visibleVolume->setTextColor(0,QColor(78,192,78));
         }
-
-
+        delete dlg;
     }
     else if(item->text(column) == "unVisibleVolume"){
-         QMessageBox::information(this, tr("Info"), item->text(column));
+        BoundaryVolumeSettingForm* dlg;
+        if(propertytree->isunVisibleVolumeData)dlg = new BoundaryVolumeSettingForm(propertytree->unvbd);
+        else                                 dlg = new BoundaryVolumeSettingForm(false);
+        if(dlg->exec() == QDialog::Accepted){//Ok
+            propertytree->unvbd = dlg->bd;
+            propertytree->isunVisibleVolumeData = true;
+            propertytree->boundary_unvisibleVolume->setTextColor(0,QColor(78,192,78));
+        }
+        delete dlg;
     }
+}
+
+void MainWindow::on_addcamerapushButton_pressed()
+{
+    propertytree->makeNewCamera();
 }

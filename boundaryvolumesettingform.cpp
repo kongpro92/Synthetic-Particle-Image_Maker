@@ -6,14 +6,35 @@ BoundaryVolumeSettingForm::BoundaryVolumeSettingForm(QWidget *parent) :
     ui(new Ui::BoundaryVolumeSettingForm)
 {
     ui->setupUi(this);
+}
 
-    QSettings settings("Kongpro","SPIM",this);
-    ui->minXlineEdit->setText(settings.value("minX","").toString());
-    ui->minYlineEdit->setText(settings.value("minY","").toString());
-    ui->minZlineEdit->setText(settings.value("minZ","").toString());
-    ui->maxXlineEdit->setText(settings.value("maxX","").toString());
-    ui->maxYlineEdit->setText(settings.value("maxY","").toString());
-    ui->maxZlineEdit->setText(settings.value("maxZ","").toString());
+BoundaryVolumeSettingForm::BoundaryVolumeSettingForm(bool visible, QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::BoundaryVolumeSettingForm)
+{
+    ui->setupUi(this);
+
+    if(visible){
+        QSettings settings("Kongpro","SPIM",this);
+        ui->minXlineEdit->setText(settings.value("vsminX","").toString());
+        ui->minYlineEdit->setText(settings.value("vsminY","").toString());
+        ui->minZlineEdit->setText(settings.value("vsminZ","").toString());
+        ui->maxXlineEdit->setText(settings.value("vsmaxX","").toString());
+        ui->maxYlineEdit->setText(settings.value("vsmaxY","").toString());
+        ui->maxZlineEdit->setText(settings.value("vsmaxZ","").toString());
+        bd.visible = true;
+    }
+    else{
+        QSettings settings("Kongpro","SPIM",this);
+        ui->minXlineEdit->setText(settings.value("unvsminX","").toString());
+        ui->minYlineEdit->setText(settings.value("unvsminY","").toString());
+        ui->minZlineEdit->setText(settings.value("unvsminZ","").toString());
+        ui->maxXlineEdit->setText(settings.value("unvsmaxX","").toString());
+        ui->maxYlineEdit->setText(settings.value("unvsmaxY","").toString());
+        ui->maxZlineEdit->setText(settings.value("unvsmaxZ","").toString());
+        bd.visible = false;
+    }
+
     BoundarySet();
 }
 
@@ -42,13 +63,26 @@ BoundaryVolumeSettingForm::~BoundaryVolumeSettingForm()
 
 void BoundaryVolumeSettingForm::on_OkpushButton_pressed()
 {
-    QSettings settings("Kongpro","SPIM",this);
-    settings.setValue("minX",ui->minXlineEdit->text());
-    settings.setValue("minY",ui->minYlineEdit->text());
-    settings.setValue("minZ",ui->minZlineEdit->text());
-    settings.setValue("maxX",ui->maxXlineEdit->text());
-    settings.setValue("maxY",ui->maxYlineEdit->text());
-    settings.setValue("maxZ",ui->maxZlineEdit->text());
+    if(bd.visible){
+        QSettings settings("Kongpro","SPIM",this);
+        settings.setValue("vsminX",ui->minXlineEdit->text());
+        settings.setValue("vsminY",ui->minYlineEdit->text());
+        settings.setValue("vsminZ",ui->minZlineEdit->text());
+        settings.setValue("vsmaxX",ui->maxXlineEdit->text());
+        settings.setValue("vsmaxY",ui->maxYlineEdit->text());
+        settings.setValue("vsmaxZ",ui->maxZlineEdit->text());
+    }
+    else{
+        QSettings settings("Kongpro","SPIM",this);
+        settings.setValue("unvsminX",ui->minXlineEdit->text());
+        settings.setValue("unvsminY",ui->minYlineEdit->text());
+        settings.setValue("unvsminZ",ui->minZlineEdit->text());
+        settings.setValue("unvsmaxX",ui->maxXlineEdit->text());
+        settings.setValue("unvsmaxY",ui->maxYlineEdit->text());
+        settings.setValue("unvsmaxZ",ui->maxZlineEdit->text());
+    }
+
+    BoundarySet();
     accept();
 }
 
@@ -66,10 +100,4 @@ void BoundaryVolumeSettingForm::BoundarySet()
     bd.maxx = ui->maxXlineEdit->text().toFloat();
     bd.maxy = ui->maxYlineEdit->text().toFloat();
     bd.maxz = ui->maxZlineEdit->text().toFloat();
-
-    using namespace cv;
-    Mat img = Mat(350,350,CV_8UC3,Scalar(0,0,0));
-    QPixmap pixmap =  QPixmap::fromImage(QImage((unsigned char*) img.data,img.cols,img.rows,img.step,QImage::Format_RGB888));
-    ui->Imagelabel->setPixmap( pixmap );
-    // opencv 로 블록 그려 넣기 imagelabel에
 }

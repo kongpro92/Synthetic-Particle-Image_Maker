@@ -160,6 +160,18 @@ QTreeView::branch:open:has-children:has-siblings  {
        <property name="uniformRowHeights">
         <bool>false</bool>
        </property>
+       <column>
+        <property name="text">
+         <string/>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="addcamerapushButton">
+       <property name="text">
+        <string>Add Camera</string>
+       </property>
       </widget>
      </item>
      <item>

@@ -18,6 +18,7 @@ class BoundaryVolumeSettingForm : public QDialog
 
 public:
     explicit BoundaryVolumeSettingForm(QWidget *parent = nullptr);
+    explicit BoundaryVolumeSettingForm(bool visible, QWidget *parent = nullptr);
     explicit BoundaryVolumeSettingForm(Boundary b,QWidget *parent = nullptr);
     ~BoundaryVolumeSettingForm();
 

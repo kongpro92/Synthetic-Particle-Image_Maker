@@ -46,3 +46,12 @@ PropertyTree::PropertyTree()
      delete laser;
      delete particle;
  }
+
+ void PropertyTree::makeNewCamera()
+ {
+     QTreeWidgetItem* newcamera = new QTreeWidgetItem(camera);
+     cameralist.push_back(newcamera);
+     QString str = "camera" + QString::number(cameralist.size());
+     newcamera->setText(0,str);
+     newcamera->setTextColor(0,QColor(255,0,0));
+ }
