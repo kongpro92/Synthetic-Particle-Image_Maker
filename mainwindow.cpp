@@ -50,31 +50,39 @@ void MainWindow::on_newprojectpushButton_pressed()
 
 void MainWindow::on_propertytreeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column)
 {
-    if(item->text(column) == "VisibleVolume"){
-        BoundaryVolumeSettingForm* dlg;
-        if(propertytree->isVisibleVolumeData)dlg = new BoundaryVolumeSettingForm(propertytree->vbd);
-        else                                 dlg = new BoundaryVolumeSettingForm(true);
-        if(dlg->exec() == QDialog::Accepted){//Ok
-            propertytree->vbd = dlg->bd;
-            propertytree->isVisibleVolumeData = true;
-            propertytree->boundary_visibleVolume->setTextColor(0,QColor(78,192,78));
-        }
-        delete dlg;
-    }
-    else if(item->text(column) == "unVisibleVolume"){
-        BoundaryVolumeSettingForm* dlg;
-        if(propertytree->isunVisibleVolumeData)dlg = new BoundaryVolumeSettingForm(propertytree->unvbd);
-        else                                 dlg = new BoundaryVolumeSettingForm(false);
-        if(dlg->exec() == QDialog::Accepted){//Ok
-            propertytree->unvbd = dlg->bd;
-            propertytree->isunVisibleVolumeData = true;
-            propertytree->boundary_unvisibleVolume->setTextColor(0,QColor(78,192,78));
-        }
-        delete dlg;
-    }
+
 }
 
 void MainWindow::on_addcamerapushButton_pressed()
 {
     propertytree->makeNewCamera();
+}
+
+void MainWindow::on_setpropertypushButton_pressed()
+{
+    if(propertytree == NULL)return;
+    if(ui->propertytreeWidget->isItemSelected(propertytree->boundary))
+    {
+        BoundaryVolumeSettingForm* dlg;
+        if(propertytree->isData)dlg = new BoundaryVolumeSettingForm(propertytree->vbd,
+                                                                                 propertytree->unvbd);
+        else                                 dlg = new BoundaryVolumeSettingForm();
+        if(dlg->exec() == QDialog::Accepted){//Ok
+            propertytree->vbd = dlg->bd;
+            propertytree->unvbd = dlg->bd2;
+            propertytree->isData = true;
+            propertytree->boundary->setTextColor(0,QColor(78,192,78));
+
+
+            //수정해야햄!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+           QTreeWidgetItem *treeItem = new QTreeWidgetItem(propertytree->boundary_visibleVolume);
+
+                        treeItem->setText(0, "name");
+                        treeItem->setText(0, "description");
+
+                        // QTreeWidgetItem::addChild(QTreeWidgetItem * child)
+                        propertytree->boundary_visibleVolume->addChild(treeItem);
+        }
+        delete dlg;
+    }
 }

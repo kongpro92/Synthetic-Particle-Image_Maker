@@ -13,7 +13,7 @@
 #include <QMessageBox>
 #include <QSettings>
 #include "boundaryvolumesettingform.h"
-
+#include <QTreeWidgetItem>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -36,6 +36,8 @@ private slots:
     void on_propertytreeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column);
 
     void on_addcamerapushButton_pressed();
+
+    void on_setpropertypushButton_pressed();
 
 private:
     Ui::MainWindow *ui;

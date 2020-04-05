@@ -18,8 +18,7 @@ class BoundaryVolumeSettingForm : public QDialog
 
 public:
     explicit BoundaryVolumeSettingForm(QWidget *parent = nullptr);
-    explicit BoundaryVolumeSettingForm(bool visible, QWidget *parent = nullptr);
-    explicit BoundaryVolumeSettingForm(Boundary b,QWidget *parent = nullptr);
+    explicit BoundaryVolumeSettingForm(Boundary b, Boundary unb, QWidget *parent = nullptr);
     ~BoundaryVolumeSettingForm();
 
 private slots:
@@ -34,8 +33,8 @@ private slots:
     void on_maxZlineEdit_returnPressed(){BoundarySet();}
 
 public:
-    Boundary bd;
-
+    Boundary bd;  //  visible
+    Boundary bd2; //unvisible
     void BoundarySet();
 
 private:

@@ -24,10 +24,9 @@ public:
     QTreeWidgetItem* laser;
     QTreeWidgetItem* particle;
 
-    bool isVisibleVolumeData = false;
-    bool isunVisibleVolumeData = false;
-    Boundary vbd = {0,0,0,0,0,0,true};
-    Boundary unvbd = {};
+    bool isData =false;
+    Boundary vbd = {0,0,0,0,0,0};
+    Boundary unvbd = {0,0,0,0,0,0};
 
     deque<QTreeWidgetItem*> cameralist;
 
