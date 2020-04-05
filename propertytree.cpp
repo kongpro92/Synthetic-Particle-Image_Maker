@@ -39,6 +39,14 @@ PropertyTree::PropertyTree()
      parentwidget->removeItemWidget(laser,0);
      parentwidget->removeItemWidget(particle,0);
 
+     //deque 내부의 모든 데이터 따로 삭제 해야함!!!!!!!!!!!!!!!!
+     Visiblelistclear();
+     unVisiblelistclear();
+     Cameralistclear();
+     visiblelist.clear();
+     unvisiblelist.clear();
+     cameralist.clear();
+
      delete boundary;
      delete boundary_visibleVolume;
      delete boundary_unvisibleVolume;
@@ -55,4 +63,69 @@ PropertyTree::PropertyTree()
      QString str = "camera" + QString::number(cameralist.size());
      newcamera->setText(0,str);
      newcamera->setTextColor(0,QColor(255,0,0));
+ }
+
+ void PropertyTree::SetBoundaryDataTreeview()
+ {
+     Visiblelistclear();
+     unVisiblelistclear();
+     for(int i = 0; i<6; i++){
+         QTreeWidgetItem *treeItem = new QTreeWidgetItem(boundary_visibleVolume);
+         QString tmp;
+         switch(i)
+         {
+         case 0: tmp.sprintf("minX: %5.3f",vbd.minx); break;
+         case 1: tmp.sprintf("minY: %5.3f",vbd.miny); break;
+         case 2: tmp.sprintf("minZ: %5.3f",vbd.minz); break;
+         case 3: tmp.sprintf("maxX: %5.3f",vbd.maxx); break;
+         case 4: tmp.sprintf("maxY: %5.3f",vbd.maxy); break;
+         case 5: tmp.sprintf("maxZ: %5.3f",vbd.maxz); break;
+         }
+         visiblelist.push_back(treeItem);
+         treeItem->setText(0, tmp);
+         boundary_visibleVolume->addChild(treeItem);
+     }
+
+     for(int i = 0; i<6; i++){
+         QTreeWidgetItem *treeItem = new QTreeWidgetItem(boundary_unvisibleVolume);
+         QString tmp;
+         switch(i)
+         {
+         case 0: tmp.sprintf("minX: %5.3f",unvbd.minx); break;
+         case 1: tmp.sprintf("minY: %5.3f",unvbd.miny); break;
+         case 2: tmp.sprintf("minZ: %5.3f",unvbd.minz); break;
+         case 3: tmp.sprintf("maxX: %5.3f",unvbd.maxx); break;
+         case 4: tmp.sprintf("maxY: %5.3f",unvbd.maxy); break;
+         case 5: tmp.sprintf("maxZ: %5.3f",unvbd.maxz); break;
+         }
+         unvisiblelist.push_back(treeItem);
+         treeItem->setText(0, tmp);
+         boundary_unvisibleVolume->addChild(treeItem);
+     }
+
+
+ }
+
+ void PropertyTree::Visiblelistclear()
+ {
+     for(int i = 0; i<visiblelist.size();i++){
+         delete visiblelist[i];
+     }
+     visiblelist.clear();
+ }
+
+ void PropertyTree::unVisiblelistclear()
+ {
+     for(int i = 0; i<unvisiblelist.size();i++){
+         delete unvisiblelist[i];
+     }
+     unvisiblelist.clear();
+ }
+
+ void PropertyTree::Cameralistclear()
+ {
+     for(int i = 0; i<cameralist.size();i++){
+         delete cameralist[i];
+     }
+     cameralist.clear();
  }

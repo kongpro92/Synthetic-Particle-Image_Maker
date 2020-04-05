@@ -28,9 +28,15 @@ public:
     Boundary vbd = {0,0,0,0,0,0};
     Boundary unvbd = {0,0,0,0,0,0};
 
+    deque<QTreeWidgetItem*> visiblelist;
+    deque<QTreeWidgetItem*> unvisiblelist;
     deque<QTreeWidgetItem*> cameralist;
 
     void makeNewCamera();
+    void SetBoundaryDataTreeview();
+    void Visiblelistclear();
+    void unVisiblelistclear();
+    void Cameralistclear();
 };
 
 #endif // PROPERTYTREE_H

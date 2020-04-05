@@ -71,17 +71,10 @@ void MainWindow::on_setpropertypushButton_pressed()
             propertytree->vbd = dlg->bd;
             propertytree->unvbd = dlg->bd2;
             propertytree->isData = true;
-            propertytree->boundary->setTextColor(0,QColor(78,192,78));
+            propertytree->boundary->setTextColor(0,QColor(0,0,255));
+            propertytree->SetBoundaryDataTreeview();
 
 
-            //수정해야햄!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-           QTreeWidgetItem *treeItem = new QTreeWidgetItem(propertytree->boundary_visibleVolume);
-
-                        treeItem->setText(0, "name");
-                        treeItem->setText(0, "description");
-
-                        // QTreeWidgetItem::addChild(QTreeWidgetItem * child)
-                        propertytree->boundary_visibleVolume->addChild(treeItem);
         }
         delete dlg;
     }
