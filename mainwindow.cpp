@@ -78,4 +78,9 @@ void MainWindow::on_setpropertypushButton_pressed()
         }
         delete dlg;
     }
+    else if(ui->propertytreeWidget->isItemSelected(propertytree->laser)){
+        LaserSettingForm* dlg;
+        dlg = new LaserSettingForm();
+        dlg->exec();
+    }
 }

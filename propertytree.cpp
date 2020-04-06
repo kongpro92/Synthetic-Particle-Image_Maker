@@ -39,13 +39,10 @@ PropertyTree::PropertyTree()
      parentwidget->removeItemWidget(laser,0);
      parentwidget->removeItemWidget(particle,0);
 
-     //deque 내부의 모든 데이터 따로 삭제 해야함!!!!!!!!!!!!!!!!
+
      Visiblelistclear();
      unVisiblelistclear();
      Cameralistclear();
-     visiblelist.clear();
-     unvisiblelist.clear();
-     cameralist.clear();
 
      delete boundary;
      delete boundary_visibleVolume;

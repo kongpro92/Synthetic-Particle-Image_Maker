@@ -1,4 +1,5 @@
 QT       += core gui
+QT += charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     boundary.cpp \
     boundaryvolumesettingform.cpp \
+    lasersettingform.cpp \
     main.cpp \
     mainwindow.cpp \
     particle.cpp \
@@ -26,12 +28,14 @@ SOURCES += \
 HEADERS += \
     boundary.h \
     boundaryvolumesettingform.h \
+    lasersettingform.h \
     mainwindow.h \
     particle.h \
     propertytree.h
 
 FORMS += \
     boundaryvolumesettingform.ui \
+    lasersettingform.ui \
     mainwindow.ui
 
 win32:{

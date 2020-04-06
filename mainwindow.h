@@ -13,6 +13,7 @@
 #include <QMessageBox>
 #include <QSettings>
 #include "boundaryvolumesettingform.h"
+#include "lasersettingform.h"
 #include <QTreeWidgetItem>
 
 QT_BEGIN_NAMESPACE
